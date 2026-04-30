@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cujnc6bwq3u7"]
+
+[ext_resource type="PackedScene" uid="uid://oet83xbkvc4u" path="res://scenes/levels/level_0.tscn" id="1_sgm38"]
+[ext_resource type="Script" uid="uid://bbav2445bk7qg" path="res://resources/custom_resources/levels/level_data.gd" id="2_vyu8x"]
+[ext_resource type="Script" uid="uid://bp3s72rkynca1" path="res://resources/custom_resources/entities/movement/starting_movement_state_data.gd" id="3_nh0wo"]
+
+[sub_resource type="Resource" id="Resource_mpkw7"]
+script = ExtResource("3_nh0wo")
+position = Vector2i(48, 32)
+direction = Vector2i(1, 0)
+metadata/_custom_type_script = "uid://bp3s72rkynca1"
+
+[resource]
+script = ExtResource("2_vyu8x")
+display_name = "Test Level"
+scene = ExtResource("1_sgm38")
+starting_movement_data_list = Array[ExtResource("3_nh0wo")]([SubResource("Resource_mpkw7")])
+metadata/_custom_type_script = "uid://bbav2445bk7qg"

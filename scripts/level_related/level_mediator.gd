@@ -1,0 +1,40 @@
+extends Node2D
+
+@export var entities_container: Node2D
+@export var camera: Camera2D
+
+@export var level_data: LevelData
+var current_level_state_data: LevelStateData
+
+func set_level_state(new_level_state: LevelStateData):
+	current_level_state_data = new_level_state
+	
+	#
+
+func update_level_state():
+	var new_level_state: LevelStateData
+	
+	if current_level_state_data != null:
+		new_level_state = current_level_state_data.duplicate()
+	else:
+		new_level_state = LevelStateData.new()
+	
+	new_level_state.level_data = level_data
+	new_level_state.entity_state_data_list = get_entities_state_list()
+	
+	current_level_state_data = new_level_state
+
+func get_entities_state_list() -> Dictionary[EntityData, EntityStateData]:
+	var entity_state_data_list: Dictionary[EntityData, EntityStateData]
+		
+	if entities_container != null:
+		var entities_container_children = entities_container.get_children()
+			
+		if not entities_container_children.is_empty():
+			for entity in entities_container_children:
+				if "entity_data" in entity and "current_entity_state_data" in entity:
+					var entity_data = entity.get("entity_data")
+					var entity_state_data = entity.get("current_entity_state_data")
+					entity_state_data_list[entity_data] = entity_state_data
+	
+	return entity_state_data_list

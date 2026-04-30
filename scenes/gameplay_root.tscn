@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://2tuq4annmwcq"]
+
+[ext_resource type="Script" uid="uid://oxy12omyeab0" path="res://scripts/gameplay_manager.gd" id="1_85ppi"]
+[ext_resource type="Script" uid="uid://6o2xmlyh0rf4" path="res://scripts/level_manager.gd" id="2_hctk7"]
+
+[node name="GameplayRoot" type="Node2D" unique_id=1306377701]
+
+[node name="GameplayManager" type="Node" parent="." unique_id=1956968760 node_paths=PackedStringArray("gameplay", "level_manager")]
+script = ExtResource("1_85ppi")
+gameplay = NodePath("../Gameplay")
+level_manager = NodePath("../Gameplay/LevelRoot/LevelManager")
+
+[node name="Gameplay" type="Node2D" parent="." unique_id=251519680]
+
+[node name="LevelRoot" type="Node2D" parent="Gameplay" unique_id=2112007372]
+
+[node name="LevelManager" type="Node" parent="Gameplay/LevelRoot" unique_id=191071940 node_paths=PackedStringArray("level_container")]
+script = ExtResource("2_hctk7")
+level_container = NodePath("../Level")
+
+[node name="Level" type="Node2D" parent="Gameplay/LevelRoot" unique_id=674180538]

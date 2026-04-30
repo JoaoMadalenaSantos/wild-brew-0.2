@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://bxfy3iiaknw3o"]
+
+[ext_resource type="Script" uid="uid://46ey4ys6rt57" path="res://resources/custom_resources/entities/entity_data.gd" id="1_kf56b"]
+[ext_resource type="PackedScene" uid="uid://crfji5o05rfrr" path="res://scenes/entities/player.tscn" id="1_l8vd6"]
+
+[resource]
+script = ExtResource("1_kf56b")
+display_name = "Player"
+scene = ExtResource("1_l8vd6")
+metadata/_custom_type_script = "uid://46ey4ys6rt57"

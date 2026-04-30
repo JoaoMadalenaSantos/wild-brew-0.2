@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GameData" format=3 uid="uid://m0deh587o5cg"]
+
+[ext_resource type="Script" uid="uid://bvoxq2ivd8u8x" path="res://resources/custom_resources/entities/entity_state_data.gd" id="1_fqpxb"]
+[ext_resource type="Resource" uid="uid://b3tjti72ycmjh" path="res://resources/custom_resources/regions/region_0.tres" id="2_a4w3d"]
+[ext_resource type="Script" uid="uid://cvg866op3gm4l" path="res://resources/custom_resources/game_data/game_data.gd" id="3_tt4fc"]
+
+[sub_resource type="Resource" id="Resource_jkkvo"]
+script = ExtResource("1_fqpxb")
+metadata/_custom_type_script = "uid://bvoxq2ivd8u8x"
+
+[resource]
+script = ExtResource("3_tt4fc")
+current_region = ExtResource("2_a4w3d")
+current_player_state = SubResource("Resource_jkkvo")
+metadata/_custom_type_script = "uid://cvg866op3gm4l"
