@@ -5,7 +5,7 @@ class_name LevelData
 @export var display_name: String
 @export var always_display_name: bool = false
 
-@export var scene: PackedScene
+@export var scene_path: String
 #@export var starting_state: LevelStateData
 #var current_state: LevelStateData
 

@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://ul1narpqub85"]
+
+[ext_resource type="Theme" uid="uid://dpesbv4e3vtfd" path="res://resources/ui_theme.tres" id="1_j2h68"]
+[ext_resource type="Script" uid="uid://ti6sjj0rb88p" path="res://scripts/ui_related/dialogue_screen.gd" id="1_oe0na"]
+[ext_resource type="Texture2D" uid="uid://cupoehy1w367f" path="res://assets/textures/ui/spr_portrait_placeholder_0.png" id="3_nrwug"]
+[ext_resource type="Texture2D" uid="uid://b1leveft5hx4s" path="res://assets/textures/ui/spr_icon_press_e_0.png" id="4_nrwug"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nrwug"]
+load_path = "res://.godot/imported/spr_light_ui_block_0.png-0e5567d771367c5035380644c1f475da.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mauft"]
+atlas = SubResource("CompressedTexture2D_nrwug")
+region = Rect2(4, 36, 24, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thdk7"]
+texture = SubResource("AtlasTexture_mauft")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe0na"]
+atlas = ExtResource("4_nrwug")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eixni"]
+atlas = ExtResource("4_nrwug")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mauft"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe0na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eixni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="DialogueScreen" type="Control" unique_id=1433466723 node_paths=PackedStringArray("portrait", "text_label", "input_hint", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oe0na")
+portrait = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Portrait")
+text_label = NodePath("MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer/RichTextLabel")
+input_hint = NodePath("MarginContainer/PanelContainer/MarginContainer/InputHint")
+timer = NodePath("Timer")
+writing_tick_duration = 0.025
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=583173211]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 62.0
+grow_horizontal = 2
+theme = ExtResource("1_j2h68")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=79301450]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_thdk7")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=28813635]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1628727316]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+
+[node name="Portrait" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1643812213]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_nrwug")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=136283857]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1239131043]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_j2h68")
+text = "Lorem ipsum dolor sit amet, coLorem ipsum dolor sit amet, coLorem ipsum dolor sit amet, coLorem ipsum dolor sit 
+Lorem ipsum dolor sit amet, coLorem "
+fit_content = true
+
+[node name="InputHint" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1212603272]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 4
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/InputHint" unique_id=1711638595]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/PanelContainer/MarginContainer/InputHint/Control" unique_id=1719009354]
+sprite_frames = SubResource("SpriteFrames_mauft")
+autoplay = "default"
+
+[node name="Timer" type="Timer" parent="." unique_id=941538281]

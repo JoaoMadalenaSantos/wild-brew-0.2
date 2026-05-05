@@ -2,5 +2,5 @@ extends Resource
 
 class_name MovementStateData
 
-@export var position: Vector2i
-@export var direction: Vector2i
+@export var position: Vector2
+@export var direction: Vector2

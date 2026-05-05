@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cwkd0lyshoy3j"]
+
+[ext_resource type="Script" uid="uid://othri4340gtn" path="res://scripts/entities_related/entity_mediator.gd" id="1_2taxe"]
+[ext_resource type="Resource" uid="uid://bn6cuafascq51" path="res://resources/custom_resources/entities/sign.tres" id="2_5a0jj"]
+[ext_resource type="Texture2D" uid="uid://ctef0byqksqmc" path="res://assets/textures/entities/spr_sign_0.png" id="2_ahgfr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7agfi"]
+atlas = ExtResource("2_ahgfr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sg2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7agfi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o12gi"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_366ky"]
+size = Vector2(16, 4)
+
+[node name="Sign" type="Node2D" unique_id=1907967315 node_paths=PackedStringArray("animated_sprite_2d")]
+script = ExtResource("1_2taxe")
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+entity_data = ExtResource("2_5a0jj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1786042510]
+position = Vector2(8, -2)
+sprite_frames = SubResource("SpriteFrames_7sg2j")
+
+[node name="InteractionBox" type="Area2D" parent="." unique_id=1669119152]
+position = Vector2(8, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox" unique_id=1896862182]
+shape = SubResource("RectangleShape2D_o12gi")
+
+[node name="CollisionBox" type="StaticBody2D" parent="." unique_id=1171166779]
+position = Vector2(8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox" unique_id=1129870034]
+shape = SubResource("RectangleShape2D_366ky")

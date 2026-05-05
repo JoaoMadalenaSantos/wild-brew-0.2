@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name SoundsHelper
+
 var sound_list: Dictionary[String, AudioStreamPlayer2D]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -7,7 +9,7 @@ func _ready() -> void:
 		if child is AudioStreamPlayer2D:
 			sound_list.set(child.name, child)
 	
-	print("SoundHelper: Sound list found: ", sound_list)
+	#print("SoundHelper: Sound list found: ", sound_list)
 			
 	for key in sound_list:
 		var sound = sound_list[key]

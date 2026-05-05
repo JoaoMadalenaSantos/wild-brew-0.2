@@ -6,10 +6,28 @@ extends Node2D
 @export var level_data: LevelData
 var current_level_state_data: LevelStateData
 
+func _ready() -> void:
+	update_level_state()
+
 func set_level_state(new_level_state: LevelStateData):
 	current_level_state_data = new_level_state
+	var current_entity_list = entities_container.get_children()
 	
-	#
+	for entity in current_entity_list:
+		var entity_data = entity.get("entity_data")
+		var new_entity_state = new_level_state.entity_state_data_list[entity_data]
+		if new_entity_state == null:
+			entity.queue_free()
+		else:
+			entity.set_entity_state(new_entity_state)
+	
+	for entity in new_level_state.entity_state_data_list:
+		if current_entity_list.find_custom(
+			func(entity):
+				var entity_data = entity.get("entity_data")
+				return entity_data == new_level_state.entity_state_data_list[entity]
+		):
+			pass
 
 func update_level_state():
 	var new_level_state: LevelStateData

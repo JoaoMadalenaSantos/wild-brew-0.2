@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://dpesbv4e3vtfd"]
+
+[ext_resource type="FontFile" uid="uid://bsga10vbapbfn" path="res://assets/fonts/Tiny5-Regular.ttf" id="1_cviax"]
+
+[resource]
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 16
+HBoxContainer/constants/separation = 8
+Label/colors/font_color = Color(0.21960784, 0.08627451, 0.19215687, 1)
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_cviax")
+MarginContainer/constants/margin_bottom = 7
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+RichTextLabel/colors/default_color = Color(0.21960784, 0.08627451, 0.19215687, 1)
+RichTextLabel/constants/line_separation = 2
+RichTextLabel/font_sizes/normal_font_size = 8
+RichTextLabel/fonts/normal_font = ExtResource("1_cviax")

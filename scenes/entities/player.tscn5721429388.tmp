@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crfji5o05rfrr"]
 
-[ext_resource type="Script" uid="uid://othri4340gtn" path="res://scripts/entities_related/entity_mediator.gd" id="1_42nxq"]
+[ext_resource type="Script" uid="uid://othri4340gtn" path="res://scripts/entities_related/player_mediator.gd" id="1_42nxq"]
 [ext_resource type="Script" uid="uid://ce5w1nk4rdbhq" path="res://scripts/entities_related/sounds_helper.gd" id="2_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://b1c3iy2881poy" path="res://assets/textures/entities/spr_player_0.png" id="2_5u6hq"]
 [ext_resource type="Resource" uid="uid://bxfy3iiaknw3o" path="res://resources/custom_resources/entities/player.tres" id="2_ss7kx"]
@@ -146,7 +146,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"holding_idle_down",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -157,7 +157,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"holding_idle_side",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -168,7 +168,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"holding_idle_up",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -224,7 +224,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -235,7 +235,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_side",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,7 +246,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 2.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -307,7 +307,7 @@ entity_data = ExtResource("2_ss7kx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1399910128]
 position = Vector2(8, 4)
 sprite_frames = SubResource("SpriteFrames_0qees")
-animation = &"holding_walking_down"
+animation = &"idle_up"
 autoplay = "idle_down"
 
 [node name="MovementController" type="Node2D" parent="." unique_id=1189639718 node_paths=PackedStringArray("raycast_up", "raycast_down", "raycast_left", "raycast_right", "floor_detector")]
@@ -335,7 +335,7 @@ target_position = Vector2(16, 0)
 
 [node name="FloorDetector" type="Area2D" parent="MovementController" unique_id=1101472644]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovementController/FloorDetector" unique_id=900870527]
 shape = SubResource("RectangleShape2D_ucweq")
@@ -347,9 +347,7 @@ script = ExtResource("4_5u6hq")
 [node name="RayCast2D" type="RayCast2D" parent="InteractionController" unique_id=870307326]
 modulate = Color(0.23333335, 1, 0, 1)
 target_position = Vector2(0, 16)
-collision_mask = 4
-collide_with_areas = true
-collide_with_bodies = false
+collision_mask = 0
 
 [node name="InventoryRegistry" type="Node" parent="." unique_id=1603538380]
 

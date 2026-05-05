@@ -2,20 +2,25 @@
 
 [ext_resource type="Script" uid="uid://bjuim5yfqchol" path="res://scripts/ui_manager.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://wca4wn1nmwcy" path="res://scenes/ui/transition_screen.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ul1narpqub85" path="res://scenes/ui/dialogue_screen.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cic6jbryav4v4" path="res://scenes/ui/hud_screen.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=579255837]
 
 [node name="UIRoot" type="Node" parent="." unique_id=1657260692]
 
-[node name="UIManager" type="Node" parent="UIRoot" unique_id=519757967 node_paths=PackedStringArray("transition_screen")]
+[node name="UIManager" type="Node" parent="UIRoot" unique_id=519757967 node_paths=PackedStringArray("transition_screen", "dialogue_screen", "hud_screen")]
 script = ExtResource("1_sugp2")
 transition_screen = NodePath("../UI/TransitionScreenLayer/TransitionScreen")
+dialogue_screen = NodePath("../UI/DialogueScreenLayer/DialogueScreen")
+hud_screen = NodePath("../UI/HUDScreenLayer/HUDScreen")
 
 [node name="UI" type="Node" parent="UIRoot" unique_id=249087716]
 
 [node name="PauseScreenLayer" type="CanvasLayer" parent="UIRoot/UI" unique_id=2091640931]
 
 [node name="TransitionScreenLayer" type="CanvasLayer" parent="UIRoot/UI" unique_id=2065422464]
+layer = 10
 
 [node name="TransitionScreen" parent="UIRoot/UI/TransitionScreenLayer" unique_id=985824951 node_paths=PackedStringArray("ui_manager") instance=ExtResource("2_jyhfs")]
 ui_manager = NodePath("../../../UIManager")
@@ -24,4 +29,9 @@ ui_manager = NodePath("../../../UIManager")
 
 [node name="DialogueScreenLayer" type="CanvasLayer" parent="UIRoot/UI" unique_id=870638928]
 
+[node name="DialogueScreen" parent="UIRoot/UI/DialogueScreenLayer" unique_id=1433466723 instance=ExtResource("3_sugp2")]
+visible = false
+
 [node name="HUDScreenLayer" type="CanvasLayer" parent="UIRoot/UI" unique_id=1949051976]
+
+[node name="HUDScreen" parent="UIRoot/UI/HUDScreenLayer" unique_id=2136532672 instance=ExtResource("4_jyhfs")]

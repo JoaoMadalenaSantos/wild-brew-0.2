@@ -2,7 +2,7 @@ extends Node
 
 @export var boot_sequence_scene: PackedScene
 @export var main_menu_scene: PackedScene
-@export var gameplay_scene: PackedScene = preload("res://scenes/gameplay_root.tscn")
+@export var gameplay_scene: PackedScene = load("res://scenes/gameplay_root.tscn")
 @export var credits_scene: PackedScene
 
 @onready var main_node = get_tree().current_scene
@@ -80,7 +80,7 @@ func _exit_game_state(old_game_state: GameState):
 		GameState.CREDITS:
 			pass
 
-func _process_game_state(delta) -> void:
+func _process_game_state(_delta) -> void:
 	match current_game_state:
 		GameState.NONE:
 			pass

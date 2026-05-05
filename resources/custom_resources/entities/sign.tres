@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EntityData" format=3 uid="uid://bn6cuafascq51"]
+
+[ext_resource type="Script" uid="uid://46ey4ys6rt57" path="res://resources/custom_resources/entities/entity_data.gd" id="1_iu6bn"]
+[ext_resource type="Script" uid="uid://d2cnrurlbm6i1" path="res://resources/custom_resources/dialogue/dialogue_line_data.gd" id="1_kaue5"]
+[ext_resource type="Script" uid="uid://crw3yttujjwug" path="res://resources/custom_resources/entities/interaction/interaction_data.gd" id="1_nx7fx"]
+
+[sub_resource type="Resource" id="Resource_sguih"]
+script = ExtResource("1_kaue5")
+text = "You were not supposed to be here..."
+metadata/_custom_type_script = "uid://d2cnrurlbm6i1"
+
+[sub_resource type="Resource" id="Resource_wpkbo"]
+script = ExtResource("1_kaue5")
+text = "But who am I to say anything..."
+metadata/_custom_type_script = "uid://d2cnrurlbm6i1"
+
+[sub_resource type="Resource" id="Resource_kaue5"]
+script = ExtResource("1_nx7fx")
+action_hint = "Read"
+narration_on_action = Array[Resource]([SubResource("Resource_sguih"), SubResource("Resource_wpkbo")])
+metadata/_custom_type_script = "uid://crw3yttujjwug"
+
+[resource]
+script = ExtResource("1_iu6bn")
+display_name = "Sign"
+scene_path = "res://scenes/entities/sign.tscn"
+interactions = Array[Resource]([SubResource("Resource_kaue5")])
+metadata/_custom_type_script = "uid://46ey4ys6rt57"

@@ -11,5 +11,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if target:
-		global_position.x = lerpf(global_position.x, target.global_position.x, delta * speed)
-		global_position.y = lerpf(global_position.y, target.global_position.y, delta * speed)
+		global_position.x = lerpf(global_position.x, target.global_position.x + 8, delta * speed)
+		global_position.y = lerpf(global_position.y, target.global_position.y + 4, delta * speed)

@@ -19,7 +19,7 @@ func _ready() -> void:
 	open_finished.connect(UIService._on_transition_open_finished)
 	close_finished.connect(UIService._on_transition_close_finished)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if current_diameter == target_diameter:
 		return
 	else:
@@ -59,7 +59,6 @@ func close():
 	tween.tween_property(self, "current_diameter", target_diameter, transition_duration)
 	
 	tween.finished.connect(func():
-		print("close finished signaled")
 		emit_signal("close_finished"),
 		CONNECT_ONE_SHOT
 	)

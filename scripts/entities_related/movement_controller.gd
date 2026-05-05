@@ -72,13 +72,12 @@ func _enter_state(new_state: MovementControllerState):
 		MovementControllerState.IDLE:
 			turn(current_dir)
 				
-			if _is_on_stairs():
+			if _is_on_stairs() and _can_go_in_dir(current_dir):
 				_set_state(MovementControllerState.WALKING)
 				
 		MovementControllerState.WALKING:
 			turn_and_move(current_dir)
 	
-	print("current_dir before sinaling state entered: ", current_dir)
 	emit_signal("movement_state_entered", current_state, current_dir)
 
 func _exit_state(old_state: MovementControllerState):
@@ -160,16 +159,6 @@ func _can_go_in_dir(dir: Vector2) -> bool:
 	return true
 
 func turn(dir: Vector2):
-	match dir:
-			Vector2.UP:
-				emit_signal("movement_state_entered", current_state, current_dir)
-			Vector2.DOWN:
-				emit_signal("movement_state_entered", current_state, current_dir)
-			Vector2.LEFT:
-				emit_signal("movement_state_entered", current_state, current_dir)
-			Vector2.RIGHT:
-				emit_signal("movement_state_entered", current_state, current_dir)
-	
 	current_dir = dir
 
 func turn_and_move(dir: Vector2):
@@ -177,19 +166,11 @@ func turn_and_move(dir: Vector2):
 		turn(dir)
 	
 	else:
+		emit_signal("movement_state_entered", current_state, current_dir)
+		
 		#var footstep_pitch = randf_range(0.6, 1.0)
 		#var footstep_volume = randf_range(-21, -19)
 		#emit_signal("audio_play_requested", "Footstep", footstep_pitch, footstep_volume)
-		
-		match dir:
-			Vector2.UP:
-				emit_signal("movement_state_entered", current_state, current_dir)
-			Vector2.DOWN:
-				emit_signal("movement_state_entered", current_state, current_dir)
-			Vector2.LEFT:
-				emit_signal("movement_state_entered", current_state, current_dir)
-			Vector2.RIGHT:
-				emit_signal("movement_state_entered", current_state, current_dir)
 	
 		target_pos = get_parent().global_position + current_dir * STEP_DISTANCE
 		var mov_duration = STEP_DISTANCE / SPEED

@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="EntityStateData" format=3 uid="uid://be1esojk7emv4"]
-
-[ext_resource type="Script" uid="uid://bvoxq2ivd8u8x" path="res://resources/custom_resources/entities/entity_state_data.gd" id="1_ooqso"]
-
-[resource]
-script = ExtResource("1_ooqso")
-metadata/_custom_type_script = "uid://bvoxq2ivd8u8x"

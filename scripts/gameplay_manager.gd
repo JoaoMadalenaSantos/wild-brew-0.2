@@ -16,7 +16,7 @@ var current_state: GameplayState = -1 as GameplayState
 var previous_state: GameplayState
 
 signal entered_gameplay_state(new_state: GameplayState)
-signal save_progress_requested
+#signal save_progress_requested
 
 func _ready() -> void:
 	_set_gameplay_state(GameplayState.PRE_DAY)
@@ -70,7 +70,7 @@ func _exit_gameplay_state(old_gameplay_state: GameplayState):
 			GameManager.pass_day(1)
 			pass
 
-func _process_gameplay_state(delta) -> void:
+func _process_gameplay_state(_delta) -> void:
 	match current_state:
 		GameplayState.PRE_DAY:
 			pass

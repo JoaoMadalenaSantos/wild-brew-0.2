@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://cic6jbryav4v4"]
+
+[ext_resource type="Theme" uid="uid://dpesbv4e3vtfd" path="res://resources/ui_theme.tres" id="1_vu2i2"]
+[ext_resource type="Script" uid="uid://bn4ipi7xwwf3b" path="res://scripts/ui_related/hud_screen.gd" id="1_x1hne"]
+[ext_resource type="Texture2D" uid="uid://b1leveft5hx4s" path="res://assets/textures/ui/spr_icon_press_e_0.png" id="2_s46vt"]
+[ext_resource type="Texture2D" uid="uid://sl3s2j6613fh" path="res://assets/textures/ui/spr_light_ui_block_0.png" id="2_x1hne"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1hne"]
+atlas = ExtResource("2_x1hne")
+region = Rect2(4, 36, 24, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2u0b"]
+texture = SubResource("AtlasTexture_x1hne")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe0na"]
+atlas = ExtResource("2_s46vt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eixni"]
+atlas = ExtResource("2_s46vt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1hne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe0na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eixni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="HUDScreen" type="Control" unique_id=2136532672]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1hne")
+
+[node name="Inventory" type="MarginContainer" parent="." unique_id=1503108140]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="InteractionHint" type="MarginContainer" parent="." unique_id=1453862069]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_vu2i2")
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="InteractionHint" unique_id=834963955]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_s2u0b")
+
+[node name="MarginContainer" type="MarginContainer" parent="InteractionHint/PanelContainer" unique_id=644324025]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractionHint/PanelContainer/MarginContainer" unique_id=1783413552]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="InputHint" type="MarginContainer" parent="InteractionHint/PanelContainer/MarginContainer/HBoxContainer" unique_id=686904778]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Control" type="Control" parent="InteractionHint/PanelContainer/MarginContainer/HBoxContainer/InputHint" unique_id=32953914]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="InteractionHint/PanelContainer/MarginContainer/HBoxContainer/InputHint/Control" unique_id=297599118]
+sprite_frames = SubResource("SpriteFrames_x1hne")
+autoplay = "default"
+
+[node name="TextHint" type="Label" parent="InteractionHint/PanelContainer/MarginContainer/HBoxContainer" unique_id=1082386871]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("1_vu2i2")
+text = "Interaction"
+horizontal_alignment = 2
