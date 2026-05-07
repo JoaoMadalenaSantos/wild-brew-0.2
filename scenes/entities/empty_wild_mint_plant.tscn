@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b5i2mae82j7hu"]
+
+[ext_resource type="Script" uid="uid://othri4340gtn" path="res://scripts/entities_related/entity_mediator.gd" id="1_oub3k"]
+[ext_resource type="Script" uid="uid://crw3yttujjwug" path="res://resources/custom_resources/entities/interaction/interaction_data.gd" id="2_qkw28"]
+[ext_resource type="Texture2D" uid="uid://b8mxv5yeag6w1" path="res://assets/textures/entities/spr_plant_sheet_0.png" id="2_t6cii"]
+[ext_resource type="Script" uid="uid://46ey4ys6rt57" path="res://resources/custom_resources/entities/entity_data.gd" id="3_wf7ju"]
+
+[sub_resource type="Resource" id="Resource_cvuj1"]
+script = ExtResource("3_wf7ju")
+display_name = "Empty Wild Mint Plant"
+scene_path = "res://scenes/entities/empty_wild_mint_plant.tscn"
+metadata/_custom_type_script = "uid://46ey4ys6rt57"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkw28"]
+atlas = ExtResource("2_t6cii")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkw28"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkw28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf7ju"]
+size = Vector2(16, 4)
+
+[node name="EmptyWildMintPlant" type="Node2D" unique_id=826986279 node_paths=PackedStringArray("animated_sprite_2d")]
+script = ExtResource("1_oub3k")
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+entity_data = SubResource("Resource_cvuj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1146549907]
+position = Vector2(8, 0)
+sprite_frames = SubResource("SpriteFrames_qkw28")
+
+[node name="CollisionBox" type="StaticBody2D" parent="." unique_id=1075322431]
+position = Vector2(8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox" unique_id=1667408552]
+shape = SubResource("RectangleShape2D_wf7ju")

@@ -101,6 +101,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_vu2i2")
 toggle_mode = true
+icon_alignment = 1
 
 [node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button" unique_id=1871472642]
 layout_mode = 1
@@ -150,6 +151,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_vu2i2")
 toggle_mode = true
+icon_alignment = 1
 
 [node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button2" unique_id=913562876]
 layout_mode = 0
@@ -199,6 +201,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_vu2i2")
 toggle_mode = true
+icon_alignment = 1
 
 [node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button3" unique_id=1893026007]
 layout_mode = 0
@@ -248,6 +251,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme = ExtResource("1_vu2i2")
 toggle_mode = true
+icon_alignment = 1
 
 [node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button4" unique_id=1265303027]
 layout_mode = 0

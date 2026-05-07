@@ -7,8 +7,13 @@ class_name InventoryComponent
 @export var item_magnet: ItemMagnet
 @export var inventory_registry: InventoryRegistry
 
+signal holding_item_detected
+signal not_holding_item_detected
+
 func _ready() -> void:
 	InteractionSystem.item_spending_needed.connect(spend_item)
+	
+	inventory_registry.current_selected_item_changed.connect(_on_current_selected_item_changed)
 
 func _process(delta: float) -> void:
 	_process_item_magnet()
@@ -59,6 +64,17 @@ func _process_item_eater():
 			
 			if inventory_registry.try_adding_item(item_data, 1):
 				dropped_item.get_collected()
+
+func _on_current_selected_item_changed(item: ItemData):
+	if not holding_item_sprite or not inventory_registry:
+		return
+	
+	if item:
+		holding_item_sprite.texture = item.sprite
+		emit_signal("holding_item_detected")
+	else:
+		holding_item_sprite.texture = null
+		emit_signal("not_holding_item_detected")
 
 func spend_item(item: ItemData, quantity: int):
 	inventory_registry.try_subtracting_item(item, quantity)

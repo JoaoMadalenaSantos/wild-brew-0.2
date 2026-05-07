@@ -14,17 +14,10 @@ class_name InteractionData
 #@export var sound_on_item_spent: AudioStream
 #@export var narration_on_item_spent: Array[DialogueLineData]
 
-# Interaction result
-#@export var success_chance: float = 1.0
-
-#@export var sound_on_success: AudioStream
-#@export var narration_on_success: Array[DialogueLineData]
-
-#@export var sound_on_fail: AudioStream
-#@export var narration_on_fail: Array[DialogueLineData]
-
 # Item result
 @export var item_result: Dictionary [ItemData, int]
 #@export var item_gaining_chance: float = 1.0
 #@export var sound_on_item_gained: AudioStream
 #@export var narration_on_item_gained: Array[DialogueLineData]
+
+@export var result_entity: EntityData

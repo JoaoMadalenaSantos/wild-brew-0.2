@@ -21,3 +21,4 @@ func _on_area_exited(area: Area2D) -> void:
 	
 	if dropped_items_in_range.has(dropped_item_node):
 		dropped_items_in_range.erase(dropped_item_node)
+		dropped_item_node.set_target(null)

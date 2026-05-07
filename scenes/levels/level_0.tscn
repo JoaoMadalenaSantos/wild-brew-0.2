@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://degj1tqete8nb" path="res://scripts/level_related/level_camera.gd" id="4_wjk5u"]
 [ext_resource type="PackedScene" uid="uid://cwkd0lyshoy3j" path="res://scenes/entities/sign.tscn" id="6_3mnpy"]
 [ext_resource type="PackedScene" uid="uid://vyymyxtb22hh" path="res://scenes/entities/grown_wild_mint_plant.tscn" id="7_6ayib"]
+[ext_resource type="PackedScene" uid="uid://b5i2mae82j7hu" path="res://scenes/entities/empty_wild_mint_plant.tscn" id="8_65guy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wjk5u"]
 texture = ExtResource("1_bw3rj")
@@ -1444,6 +1445,9 @@ position = Vector2(64, 96)
 
 [node name="GrownWildMintPlant3" parent="Entities" unique_id=1190335180 instance=ExtResource("7_6ayib")]
 position = Vector2(64, 112)
+
+[node name="EmptyWildMintPlant" parent="Entities" unique_id=826986279 instance=ExtResource("8_65guy")]
+position = Vector2(80, 112)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1608191645]
 limit_left = 0

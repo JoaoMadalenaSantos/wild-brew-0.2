@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://othri4340gtn" path="res://scripts/entities_related/entity_mediator.gd" id="1_k76gg"]
 [ext_resource type="Resource" uid="uid://bjqik3p1hrhll" path="res://resources/custom_resources/entities/grown_wild_mint_plant.tres" id="2_24upm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k76gg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_24upm"]
 atlas = ExtResource("1_gyv1h")
 region = Rect2(0, 0, 16, 16)
 
@@ -12,7 +12,7 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k76gg")
+"texture": SubResource("AtlasTexture_24upm")
 }],
 "loop": true,
 "name": &"default",
@@ -35,11 +35,12 @@ position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_24upm")
 
 [node name="InteractionBox" type="Area2D" parent="." unique_id=281471882]
-position = Vector2(8, 0)
+position = Vector2(8, -4)
 collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox" unique_id=1632174197]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_6wtb3")
 
 [node name="CollisionBox" type="StaticBody2D" parent="." unique_id=477517522]

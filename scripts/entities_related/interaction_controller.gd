@@ -10,18 +10,13 @@ var current_interaction: InteractionData
 
 var interaction_locked: bool = false
 
-signal interactable_detected(entity_targeted: EntityData)
-
 signal check_item_in_inventory_needed(item_data: ItemData, quantity: int)
 signal check_space_in_inventory_needed(item_data: ItemData, quantity: int)
 
 func _ready() -> void:
-	#interactable_detected.connect(InteractionSystem.get_interaction)
-	
 	InteractionSystem.interaction_finished.connect(_on_interaction_finished)
 
 func _physics_process(delta: float) -> void:
-	#print("interaction_locked is ", interaction_locked)
 	
 	if raycast.is_colliding() and not current_targeted_entity:
 		_on_raycast_colliding()
@@ -106,13 +101,12 @@ func update_facing_direction(dir: Vector2):
 	raycast.target_position = dir * 16
 	
 func _on_raycast_colliding():
-	#print("interaction_locked is ", interaction_locked)
-	
 	current_targeted_entity = get_facing_interactable()
 	
-	if current_targeted_entity.get("entity_data"):
-		current_interaction = await get_next_valid_interaction(current_targeted_entity)
-		#print("current_interaction is ", current_interaction)
+	if _is_facing_interactable():
+		if current_targeted_entity.get("entity_data"):
+			current_interaction = await get_next_valid_interaction(current_targeted_entity)
+			#print("current_interaction is ", current_interaction)
 
 func _on_interaction_finished():
 	_on_raycast_colliding()

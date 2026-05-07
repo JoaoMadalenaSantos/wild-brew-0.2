@@ -44,10 +44,25 @@ func update_inventory(inventory_data: InventoryData, selected_slot: int):
 	change_selected_slot(selected_slot)
 
 func change_inventory_data(inventory_data: InventoryData):
-	if current_inventory_data == inventory_data:
-		return
+	var inventory_dict: Dictionary
+	for slot_idx in range(inventory_data.slots.size()):
+		var slot = inventory_data.slots[slot_idx]
+		var slot_dict = {"item": slot.item, "quantity": slot.quantity}
+		inventory_dict[slot_idx] = slot_dict
+	print("HUDScreen: inventory_data is ", inventory_dict)
+	
+	#if current_inventory_data == inventory_data:
+		#return
 	
 	current_inventory_data = inventory_data
+	
+	#var inventory_dict: Dictionary
+	#for slot_idx in range(current_inventory_data.slots.size()):
+		#var slot = current_inventory_data.slots[slot_idx]
+		#var slot_dict = {"item": slot.item, "quantity": slot.quantity}
+		#inventory_dict[slot_idx] = slot_dict
+	#print("HUDScreen: inventory_data is ", inventory_dict)
+	
 	
 	for slot in range(slot_list.size()):
 		var slot_button = slot_list[slot] 

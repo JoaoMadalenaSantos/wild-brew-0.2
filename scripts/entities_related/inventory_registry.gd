@@ -6,8 +6,11 @@ class_name InventoryRegistry
 @export var starting_inventory_data: InventoryData
 var current_inventory_data: InventoryData
 var current_selected_slot: int = 0
+var current_selected_item: ItemData = null
 
 var inventory_locked: bool = false
+
+signal current_selected_item_changed(item: ItemData)
 
 func _ready() -> void:
 	refresh_inventory()
@@ -67,9 +70,12 @@ func find_slot_for_item(item: ItemData, quantity: int) -> int:
 		
 		if slot_data.item != item:
 			continue
-		else:
-			slot_for_item = slot
-			return slot_for_item
+		
+		if slot_data.quantity == item.max_quantity_in_stack:
+			continue
+			
+		slot_for_item = slot
+		return slot_for_item
 	
 	for slot in range(current_inventory_data.slots.size()):
 		var slot_data = current_inventory_data.slots[slot]
@@ -163,5 +169,25 @@ func refresh_inventory():
 		if slot_data.item != null and slot_data.quantity <= 0:
 			slot_data.item = null
 	
-	print("InventoryRegistry: inventory_data is ", current_inventory_data)
+	var inventory_dict: Dictionary
+	
+	for slot_idx in range(current_inventory_data.slots.size()):
+		var slot = current_inventory_data.slots[slot_idx]
+		var slot_dict = {"item": slot.item, "quantity": slot.quantity}
+		
+		inventory_dict[slot_idx] = slot_dict
+	
+	print("InventoryRegistry: inventory_data is ", inventory_dict)
+	
+	update_current_selected_item()
 	UIService.request_inventory_update(current_inventory_data, current_selected_slot)
+
+func update_current_selected_item():
+	var item_in_selected_slot = current_inventory_data.slots[current_selected_slot].item
+	
+	if item_in_selected_slot:
+		current_selected_item = item_in_selected_slot
+	else:
+		current_selected_item = null
+	
+	emit_signal("current_selected_item_changed", item_in_selected_slot)

@@ -30,8 +30,13 @@ func apply_interaction(interacting_entity: Node, interacted_entity: Node, intera
 			var quantity = interaction.item_result[item]
 			
 			for item_unit in range(quantity):
+				print("trying to spawn item_result as dropped items")
 				SpawnService.request_spawn_dropped_item(item, interacted_entity.global_position)
 				
+	if interaction.result_entity:
+		var position = interacted_entity.global_position
+		interacted_entity.queue_free()
+		SpawnService.request_spawn_entity(interaction.result_entity, position)
 	
 	emit_signal("interaction_finished")
 		

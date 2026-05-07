@@ -27,7 +27,7 @@ signal level_exited(level_state_data: LevelStateData, player_state_data: EntityS
 func _ready() -> void:
 	level_exited.connect(GameManager._on_level_exited)
 	
-	SpawnService.spawn_dropped_item_needed.connect(spawn_entity)
+	SpawnService.spawn_entity_needed.connect(spawn_entity)
 
 func _set_state(new_state: LevelManagerState):
 	if new_state == current_state:
@@ -137,13 +137,11 @@ func create_level_state_data_for_current_level():
 	current_level_state_data = new_level_state_data
 
 func spawn_entity(entity: Node2D, position: Vector2):
-	pass
-
-#func toggle_player_movement_lock():
-	#var player: Node = level_container.find_child("Player", true)
-	#
-	#if player and player.has_method("request_movement_lock_toggle"):
-		#player.request_movement_lock_toggle()
+	entity.position = position
+	
+	var entities_container = current_level_node.find_child("Entities", false)
+	entities_container.add_child(entity)
+	entities_container.move_child(entity, 0)
 
 func _on_interaction_with_portal(target_level: LevelData):
 	#save_level_state(current_level_data)

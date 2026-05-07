@@ -3,7 +3,7 @@ extends Resource
 class_name EntityStateData
 
 @export var movement: MovementStateData
-#@export var inventory: InventoryState
+#@export var inventory: InventoryData
 #@export var interaction: InteractionState
 #@export var effects: EffectsState
 

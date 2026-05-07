@@ -5,13 +5,15 @@
 [ext_resource type="Script" uid="uid://d2cnrurlbm6i1" path="res://resources/custom_resources/dialogue/dialogue_line_data.gd" id="2_wjiw8"]
 [ext_resource type="Script" uid="uid://46ey4ys6rt57" path="res://resources/custom_resources/entities/entity_data.gd" id="2_ws06g"]
 [ext_resource type="Resource" uid="uid://208wt1tj4kto" path="res://resources/custom_resources/items/wild_mint_leaf_item.tres" id="3_ddooy"]
+[ext_resource type="Resource" uid="uid://dfhtwjmn16s4r" path="res://resources/custom_resources/entities/empty_wild_mint_plant.tres" id="5_vqqbl"]
 
 [sub_resource type="Resource" id="Resource_vqqbl"]
 script = ExtResource("1_tuiab")
 action_hint = "Harvest"
-item_change = Dictionary[ExtResource("2_ddooy"), int]({
+item_result = Dictionary[ExtResource("2_ddooy"), int]({
 ExtResource("3_ddooy"): 2
 })
+result_entity = ExtResource("5_vqqbl")
 metadata/_custom_type_script = "uid://crw3yttujjwug"
 
 [resource]

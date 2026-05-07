@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b6551lu0tg5pc"]
+
+[ext_resource type="Script" uid="uid://c27j4i4qfp8kl" path="res://scripts/item_related/dropped_item.gd" id="1_c4qjp"]
+[ext_resource type="Texture2D" uid="uid://b4tp2dhvb8c5n" path="res://assets/textures/items/spr_items_sheet_0.png" id="2_f8u78"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frk6y"]
+atlas = ExtResource("2_f8u78")
+region = Rect2(15, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nej08"]
+radius = 8.0
+
+[node name="DroppedItem" type="Node2D" unique_id=793006244 node_paths=PackedStringArray("attraction_delay_timer", "item_sprite")]
+script = ExtResource("1_c4qjp")
+attraction_delay_timer = NodePath("AttractionDelay")
+item_sprite = NodePath("ItemSprite")
+
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=1140665097]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_frk6y")
+
+[node name="MagnetBox" type="Area2D" parent="." unique_id=970309975]
+position = Vector2(8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetBox" unique_id=1011122710]
+shape = SubResource("CircleShape2D_nej08")
+
+[node name="AttractionDelay" type="Timer" parent="." unique_id=1932011156]
+wait_time = 0.5
+one_shot = true
+autostart = true
