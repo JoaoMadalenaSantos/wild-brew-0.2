@@ -12,6 +12,7 @@ func _ready() -> void:
 	
 	UIService.interaction_hint_needed.connect(display_interaction_hint)
 	UIService.interaction_hint_not_needed.connect(hide_interaction_hint)
+	UIService.inventory_update_needed.connect(update_inventory)
 	
 	UIService.display_dialogue_lines_needed.connect(display_dialogue)
 
@@ -34,6 +35,9 @@ func display_interaction_hint(hint_text: String):
 func hide_interaction_hint():
 	hud_screen.hide_interaction_hint()
 	pass
+
+func update_inventory(inventory_data: InventoryData, selected_slot: int):
+	hud_screen.update_inventory(inventory_data, selected_slot)
 
 #endregion
 

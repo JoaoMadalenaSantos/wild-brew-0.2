@@ -5,10 +5,14 @@ class_name EntityMediator
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var movement_controller: MovementController
 @export var interaction_controller: InteractionController
+@export var inventory_component: InventoryComponent
 
 @export var entity_data: EntityData
 var entity_starting_movement_state: StartingMovementStateData
 @export var current_entity_state_data: EntityStateData
+
+signal check_item_in_inventory_answered(answer: bool)
+signal check_space_in_inventory_answered(answer: bool)
 
 func _ready() -> void:
 	update_entity_state()
@@ -16,6 +20,10 @@ func _ready() -> void:
 	if movement_controller:
 		movement_controller.movement_state_entered.connect(_on_movement_state_entered)
 		apply_entity_starting_movement_state()
+		
+	if interaction_controller:
+		interaction_controller.check_item_in_inventory_needed.connect(_on_check_item_in_inventory_needed)
+		interaction_controller.check_space_in_inventory_needed.connect(_on_check_space_in_inventory_needed)
 
 func _process(_delta: float) -> void:
 	pass
@@ -123,3 +131,22 @@ func update_entity_state():
 		#new_entity_state.effects = effects_registry.current_effects_data
 	
 	current_entity_state_data = new_entity_state
+
+func _on_check_item_in_inventory_needed(item_data: ItemData, quantity: int):
+	if not inventory_component:
+		emit_signal("check_item_in_inventory_answered", false)
+		return
+	
+	var answer = inventory_component.check_if_has_item(item_data, quantity)
+	emit_signal("check_item_in_inventory_answered", answer)
+
+func _on_check_space_in_inventory_needed(item_data: ItemData, quantity: int):
+	if not inventory_component:
+		emit_signal("check_space_in_inventory_answered", false)
+		return
+	
+	var answer: bool = true
+	if inventory_component.find_slot_for_item(item_data, quantity) == -1:
+		answer = false
+	
+	emit_signal("check_space_in_inventory_answered", answer)

@@ -6,11 +6,7 @@
 [ext_resource type="Resource" uid="uid://bxfy3iiaknw3o" path="res://resources/custom_resources/entities/player.tres" id="2_ss7kx"]
 [ext_resource type="Script" uid="uid://diq5ubrhfo48s" path="res://scripts/entities_related/interaction_controller.gd" id="4_5u6hq"]
 [ext_resource type="Script" uid="uid://bn31aqn5we7rb" path="res://scripts/entities_related/movement_controller.gd" id="4_d4qa6"]
-[ext_resource type="Script" uid="uid://cak7svjltytfn" path="res://scripts/entities_related/inventory_component.gd" id="6_ss7kx"]
-[ext_resource type="Texture2D" uid="uid://b4tp2dhvb8c5n" path="res://assets/textures/items/spr_items_sheet_0.png" id="7_b6tgf"]
-[ext_resource type="Script" uid="uid://bj7l34qybh8d3" path="res://scripts/entities_related/item_magnet.gd" id="8_73kkf"]
-[ext_resource type="Script" uid="uid://dqjg6xvva8wub" path="res://scripts/entities_related/item_eater.gd" id="8_n5sgd"]
-[ext_resource type="Script" uid="uid://c3okpdg3kkjg2" path="res://scripts/entities_related/inventory_registry.gd" id="9_n5sgd"]
+[ext_resource type="Script" uid="uid://cak7svjltytfn" path="res://scripts/entities_related/inventory_registry.gd" id="6_ss7kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4qa6"]
 atlas = ExtResource("2_5u6hq")
@@ -302,16 +298,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucweq"]
 size = Vector2(8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ow4gm"]
-atlas = ExtResource("7_b6tgf")
-region = Rect2(15, 0, 16, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ss7kx"]
-radius = 4.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fxsl8"]
-radius = 18.0
-
 [node name="Player" type="Node2D" unique_id=850908999 node_paths=PackedStringArray("animated_sprite_2d", "movement_controller", "interaction_controller")]
 script = ExtResource("1_42nxq")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
@@ -366,40 +352,11 @@ collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="InventoryComponent" type="Node2D" parent="." unique_id=1685207775 node_paths=PackedStringArray("holding_item_sprite", "item_eater", "item_magnet", "inventory_registry")]
-position = Vector2(8, 8)
+[node name="InventoryRegistry" type="Node" parent="." unique_id=1603538380]
 script = ExtResource("6_ss7kx")
-holding_item_sprite = NodePath("HoldingItemSprite")
-item_eater = NodePath("ItemEater")
-item_magnet = NodePath("ItemMagnet")
-inventory_registry = NodePath("InventoryRegistry")
-
-[node name="HoldingItemSprite" type="Sprite2D" parent="InventoryComponent" unique_id=636390631]
-position = Vector2(0, -14)
-texture = SubResource("AtlasTexture_ow4gm")
-
-[node name="ItemEater" type="Area2D" parent="InventoryComponent" unique_id=2008303484]
-script = ExtResource("8_n5sgd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryComponent/ItemEater" unique_id=33049663]
-shape = SubResource("CircleShape2D_ss7kx")
-
-[node name="ItemMagnet" type="Area2D" parent="InventoryComponent" unique_id=1281656933]
-script = ExtResource("8_73kkf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InventoryComponent/ItemMagnet" unique_id=563754261]
-shape = SubResource("CircleShape2D_fxsl8")
-
-[node name="InventoryRegistry" type="Node" parent="InventoryComponent" unique_id=1915771850]
-script = ExtResource("9_n5sgd")
 
 [node name="EffectsRegistry" type="Node" parent="." unique_id=412380130]
 
 [node name="SoundsHelper" type="Node2D" parent="." unique_id=604603591]
 position = Vector2(8, 4)
 script = ExtResource("2_1ie0h")
-
-[connection signal="area_entered" from="InventoryComponent/ItemEater" to="InventoryComponent/ItemEater" method="_on_area_entered"]
-[connection signal="area_exited" from="InventoryComponent/ItemEater" to="InventoryComponent/ItemEater" method="_on_area_exited"]
-[connection signal="area_entered" from="InventoryComponent/ItemMagnet" to="InventoryComponent/ItemMagnet" method="_on_area_entered"]
-[connection signal="area_exited" from="InventoryComponent/ItemMagnet" to="InventoryComponent/ItemMagnet" method="_on_area_exited"]

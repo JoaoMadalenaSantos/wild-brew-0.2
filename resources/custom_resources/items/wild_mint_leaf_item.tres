@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://208wt1tj4kto"]
+
+[ext_resource type="Script" uid="uid://b44ejijhff6y5" path="res://resources/custom_resources/items/item_data.gd" id="1_0xn12"]
+[ext_resource type="Texture2D" uid="uid://b4tp2dhvb8c5n" path="res://assets/textures/items/spr_items_sheet_0.png" id="2_08nji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75dar"]
+atlas = ExtResource("2_08nji")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_0xn12")
+display_name = "Wild Mint Leaf"
+description = "The leaf of the Wild Mint Plant."
+sprite = SubResource("AtlasTexture_75dar")
+metadata/_custom_type_script = "uid://b44ejijhff6y5"

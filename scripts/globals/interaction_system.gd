@@ -1,32 +1,37 @@
 extends Node
 
+signal item_spending_needed(item_data: ItemData, quantity: int)
 signal interaction_finished
 
-func apply_interaction(entity_data: EntityData):
-	var interaction_data = get_interaction(entity_data)
+func apply_interaction(interacting_entity: Node, interacted_entity: Node, interaction: InteractionData):
+	var interacted_entity_data: EntityData = interacted_entity.get("entity_data")
+	
 	UIService.request_hide_interaction_hint()
 	
-	if not interaction_data.narration_on_action.is_empty():
-		for line in interaction_data.narration_on_action:
-			var portrait_texture = entity_data.portraits[line.mood]
+	if not interaction.narration_on_action.is_empty():
+		for line in interaction.narration_on_action:
+			var portrait_texture = interacted_entity_data.portraits[line.mood]
 			
 			UIService.request_display_dialogue_line(self, line.text, portrait_texture)
 			
 			await UIService.dialogue_line_finished
+			
+	if not interaction.item_cost.is_empty():
+		for item in interaction.item_cost:
+			var item_data = item
+			var quantity = interaction.item_cost[item]
+			
+			# Apply chance later here serving as condition to emit the signal
+			
+			emit_signal("item_spending_needed", item_data, quantity)
+	
+	if not interaction.item_result.is_empty():
+		for item in interaction.item_result:
+			var quantity = interaction.item_result[item]
+			
+			for item_unit in range(quantity):
+				SpawnService.request_spawn_dropped_item(item, interacted_entity.global_position)
+				
 	
 	emit_signal("interaction_finished")
-
-func get_interaction(entity_data: EntityData) -> InteractionData:
-	var interaction = entity_data.interactions[0]
-	
-	if interaction:
-		UIService.request_display_interaction_hint(interaction.action_hint)
-	else:
-		UIService.request_hide_interaction_hint()
-	
-	return interaction
-	
-	# Todo: Add loop to manage entities with more than one interaction
-	#for interaction_data in entity_data.interactions:
-		# Todo: Logic to check if context meet interaction conditions (inventory)
 		

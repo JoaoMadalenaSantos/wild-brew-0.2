@@ -5,9 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://b1leveft5hx4s" path="res://assets/textures/ui/spr_icon_press_e_0.png" id="2_s46vt"]
 [ext_resource type="Texture2D" uid="uid://sl3s2j6613fh" path="res://assets/textures/ui/spr_light_ui_block_0.png" id="2_x1hne"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1hne"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x1hne"]
+font_size = 8
+font_color = Color(0.36862746, 0.7137255, 0.6784314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s2u0b"]
+font_size = 8
+shadow_size = 0
+shadow_color = Color(0.21960784, 0.08627451, 0.19215687, 1)
+shadow_offset = Vector2(0, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1hne"]
 atlas = ExtResource("2_x1hne")
-region = Rect2(4, 36, 24, 25)
+region = Rect2(4, 4, 24, 25)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2u0b"]
 texture = SubResource("AtlasTexture_x1hne")
@@ -50,9 +62,234 @@ script = ExtResource("1_x1hne")
 
 [node name="Inventory" type="MarginContainer" parent="." unique_id=1503108140]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -26.0
+offset_right = 49.0
 grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Inventory" unique_id=340704899]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x1hne")
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory/PanelContainer" unique_id=1152402062]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/PanelContainer/MarginContainer" unique_id=1100893664]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="Button" type="Button" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer" unique_id=1388693031]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+toggle_mode = true
+
+[node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button" unique_id=1871472642]
+layout_mode = 1
+offset_right = 6.0
+offset_bottom = 9.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button/InputHint" unique_id=944372752]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_vu2i2")
+text = "1"
+label_settings = SubResource("LabelSettings_x1hne")
+
+[node name="ItemQuantity" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button" unique_id=1720970054]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button/ItemQuantity" unique_id=1879668232]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+label_settings = SubResource("LabelSettings_s2u0b")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer" unique_id=1616813134]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+toggle_mode = true
+
+[node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button2" unique_id=913562876]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 9.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button2/InputHint" unique_id=524240461]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_vu2i2")
+text = "2"
+label_settings = SubResource("LabelSettings_x1hne")
+
+[node name="ItemQuantity" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button2" unique_id=126035851]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button2/ItemQuantity" unique_id=1478845089]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+label_settings = SubResource("LabelSettings_s2u0b")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button3" type="Button" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer" unique_id=464459791]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+toggle_mode = true
+
+[node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button3" unique_id=1893026007]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 9.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button3/InputHint" unique_id=1059838342]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_vu2i2")
+text = "3"
+label_settings = SubResource("LabelSettings_x1hne")
+
+[node name="ItemQuantity" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button3" unique_id=564507482]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button3/ItemQuantity" unique_id=1780254246]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+label_settings = SubResource("LabelSettings_s2u0b")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button4" type="Button" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer" unique_id=764030206]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+toggle_mode = true
+
+[node name="InputHint" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button4" unique_id=1265303027]
+layout_mode = 0
+offset_right = 6.0
+offset_bottom = 9.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button4/InputHint" unique_id=1406328330]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_vu2i2")
+text = "4"
+label_settings = SubResource("LabelSettings_x1hne")
+
+[node name="ItemQuantity" type="MarginContainer" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button4" unique_id=1018581536]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 2
+
+[node name="Label" type="Label" parent="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button4/ItemQuantity" unique_id=2111953925]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("1_vu2i2")
+label_settings = SubResource("LabelSettings_s2u0b")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="InteractionHint" type="MarginContainer" parent="." unique_id=1453862069]
 visible = false
@@ -120,3 +357,8 @@ size_flags_horizontal = 8
 theme = ExtResource("1_vu2i2")
 text = "Interaction"
 horizontal_alignment = 2
+
+[connection signal="pressed" from="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button" to="." method="change_selected_slot" binds= [0]]
+[connection signal="pressed" from="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button2" to="." method="change_selected_slot" binds= [1]]
+[connection signal="pressed" from="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button3" to="." method="change_selected_slot" binds= [2]]
+[connection signal="pressed" from="Inventory/PanelContainer/MarginContainer/HBoxContainer/Button4" to="." method="change_selected_slot" binds= [3]]

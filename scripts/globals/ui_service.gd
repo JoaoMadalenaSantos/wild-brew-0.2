@@ -19,6 +19,7 @@ signal transition_close_finished
 
 signal interaction_hint_needed(hint_text: String)
 signal interaction_hint_not_needed
+signal inventory_update_needed(inventory_data: InventoryData, selected_slot: int)
 
 signal display_dialogue_lines_needed(line_text: String, portrait: Texture2D)
 signal dialogue_line_finished
@@ -69,6 +70,9 @@ func request_display_interaction_hint(hint_text: String):
 func request_hide_interaction_hint():
 	emit_signal("interaction_hint_not_needed")
 
+func request_inventory_update(inventory_data: InventoryData, selected_slot: int):
+	emit_signal("inventory_update_needed", inventory_data, selected_slot)
+	
 #endregion
 
 #region DialogueService

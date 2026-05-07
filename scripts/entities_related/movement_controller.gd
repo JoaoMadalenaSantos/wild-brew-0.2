@@ -181,7 +181,7 @@ func turn_and_move(dir: Vector2):
 func toggle_movement_lock():
 	if is_movement_locked:
 		unlock_movement()
-	elif not is_movement_locked:
+	else:
 		lock_movement()
 
 func lock_movement():

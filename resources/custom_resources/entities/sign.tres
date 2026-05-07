@@ -17,12 +17,12 @@ metadata/_custom_type_script = "uid://d2cnrurlbm6i1"
 [sub_resource type="Resource" id="Resource_kaue5"]
 script = ExtResource("1_nx7fx")
 action_hint = "Read"
-narration_on_action = Array[Resource]([SubResource("Resource_sguih"), SubResource("Resource_wpkbo")])
+narration_on_action = Array[ExtResource("1_kaue5")]([SubResource("Resource_sguih"), SubResource("Resource_wpkbo")])
 metadata/_custom_type_script = "uid://crw3yttujjwug"
 
 [resource]
 script = ExtResource("1_iu6bn")
 display_name = "Sign"
 scene_path = "res://scenes/entities/sign.tscn"
-interactions = Array[Resource]([SubResource("Resource_kaue5")])
+interactions = Array[ExtResource("1_nx7fx")]([SubResource("Resource_kaue5")])
 metadata/_custom_type_script = "uid://46ey4ys6rt57"

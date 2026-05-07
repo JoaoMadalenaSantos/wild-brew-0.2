@@ -1,16 +1,14 @@
 [gd_scene format=3 uid="uid://ul1narpqub85"]
 
+[ext_resource type="Texture2D" uid="uid://sl3s2j6613fh" path="res://assets/textures/ui/spr_light_ui_block_0.png" id="1_5gdnf"]
 [ext_resource type="Theme" uid="uid://dpesbv4e3vtfd" path="res://resources/ui_theme.tres" id="1_j2h68"]
 [ext_resource type="Script" uid="uid://ti6sjj0rb88p" path="res://scripts/ui_related/dialogue_screen.gd" id="1_oe0na"]
 [ext_resource type="Texture2D" uid="uid://cupoehy1w367f" path="res://assets/textures/ui/spr_portrait_placeholder_0.png" id="3_nrwug"]
 [ext_resource type="Texture2D" uid="uid://b1leveft5hx4s" path="res://assets/textures/ui/spr_icon_press_e_0.png" id="4_nrwug"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nrwug"]
-load_path = "res://.godot/imported/spr_light_ui_block_0.png-0e5567d771367c5035380644c1f475da.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mauft"]
-atlas = SubResource("CompressedTexture2D_nrwug")
-region = Rect2(4, 36, 24, 25)
+atlas = ExtResource("1_5gdnf")
+region = Rect2(4, 4, 24, 25)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thdk7"]
 texture = SubResource("AtlasTexture_mauft")

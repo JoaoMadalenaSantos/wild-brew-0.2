@@ -1,10 +1,53 @@
 [gd_resource type="Theme" format=3 uid="uid://dpesbv4e3vtfd"]
 
 [ext_resource type="FontFile" uid="uid://bsga10vbapbfn" path="res://assets/fonts/Tiny5-Regular.ttf" id="1_cviax"]
+[ext_resource type="Texture2D" uid="uid://4pejvhxk5tm0" path="res://assets/textures/ui/spr_light_ui_patch_0.png" id="1_yl303"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yl303"]
+load_path = "res://.godot/imported/spr_light_ui_patch_0.png-a6ffaa69220016c4a087e6c6b0a7a928.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qosx5"]
+atlas = SubResource("CompressedTexture2D_yl303")
+region = Rect2(21, 5, 6, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7jai"]
+texture = SubResource("AtlasTexture_qosx5")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufndy"]
+atlas = ExtResource("1_yl303")
+region = Rect2(5, 5, 6, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybqih"]
+texture = SubResource("AtlasTexture_ufndy")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvwhf"]
+atlas = ExtResource("1_yl303")
+region = Rect2(37, 5, 6, 7)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r625f"]
+texture = SubResource("AtlasTexture_jvwhf")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+expand_margin_bottom = 1.0
 
 [resource]
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 16
+Button/styles/hover = SubResource("StyleBoxTexture_m7jai")
+Button/styles/normal = SubResource("StyleBoxTexture_ybqih")
+Button/styles/pressed = SubResource("StyleBoxTexture_r625f")
 HBoxContainer/constants/separation = 8
 Label/colors/font_color = Color(0.21960784, 0.08627451, 0.19215687, 1)
 Label/font_sizes/font_size = 8
