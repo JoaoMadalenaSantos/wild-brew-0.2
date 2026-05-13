@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://46ey4ys6rt57" path="res://resources/custom_resources/entities/entity_data.gd" id="1_iu6bn"]
 [ext_resource type="Script" uid="uid://d2cnrurlbm6i1" path="res://resources/custom_resources/dialogue/dialogue_line_data.gd" id="1_kaue5"]
 [ext_resource type="Script" uid="uid://crw3yttujjwug" path="res://resources/custom_resources/entities/interaction/interaction_data.gd" id="1_nx7fx"]
+[ext_resource type="Script" uid="uid://b44ejijhff6y5" path="res://resources/custom_resources/items/item_data.gd" id="2_sguih"]
 
 [sub_resource type="Resource" id="Resource_sguih"]
 script = ExtResource("1_kaue5")

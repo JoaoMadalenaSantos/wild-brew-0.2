@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var entities_container: Node2D
+@export var y_sort_node: Node2D
 @export var camera: Camera2D
 
 @export var level_data: LevelData
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func set_level_state(new_level_state: LevelStateData):
 	current_level_state_data = new_level_state
-	var current_entity_list = entities_container.get_children()
+	var current_entity_list = y_sort_node.get_children()
 	
 	for entity in current_entity_list:
 		var entity_data = entity.get("entity_data")
@@ -45,8 +45,8 @@ func update_level_state():
 func get_entities_state_list() -> Dictionary[EntityData, EntityStateData]:
 	var entity_state_data_list: Dictionary[EntityData, EntityStateData]
 		
-	if entities_container != null:
-		var entities_container_children = entities_container.get_children()
+	if y_sort_node != null:
+		var entities_container_children = y_sort_node.get_children()
 			
 		if not entities_container_children.is_empty():
 			for entity in entities_container_children:

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://x8ay7vw5e8i1"]
+
+[ext_resource type="Script" uid="uid://dq7460gtjtggf" path="res://scripts/level_related/areas_connection.gd" id="1_qchy8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbr4l"]
+size = Vector2(2, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2puw"]
+size = Vector2(2, 16)
+
+[node name="AreasConnection" type="Node2D" unique_id=737993993]
+script = ExtResource("1_qchy8")
+
+[node name="AreaAEntrance" type="Area2D" parent="." unique_id=34085780]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(1, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAEntrance" unique_id=1331840093]
+shape = SubResource("RectangleShape2D_mbr4l")
+
+[node name="AreaBEntrance" type="Area2D" parent="." unique_id=1427656602]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(15, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaBEntrance" unique_id=824473319]
+shape = SubResource("RectangleShape2D_k2puw")
+
+[connection signal="area_entered" from="AreaAEntrance" to="." method="_on_area_entered_in_area_a_entrance"]
+[connection signal="area_exited" from="AreaAEntrance" to="." method="_on_area_exited_area_a_entrance"]
+[connection signal="area_entered" from="AreaBEntrance" to="." method="_on_area_entered_in_area_b_entrance"]
+[connection signal="area_exited" from="AreaBEntrance" to="." method="_on_area_exited_area_b_entrance"]

@@ -109,8 +109,8 @@ func spawn_level(level_data: LevelData, _level_state_data: LevelStateData):
 	
 	player_node.set_entity_starting_movement_state(player_starting_movement_data)
 	
-	var entities_container = current_level_node.find_child("Entities", false)
-	entities_container.add_child(player_node)
+	var world_y_sort = current_level_node.find_child("WorldYSort", true)
+	world_y_sort.add_child(player_node)
 	
 	var camera = current_level_node.find_child("Camera2D", false)
 	camera.target = player_node
@@ -122,13 +122,13 @@ func create_level_state_data_for_current_level():
 	new_level_state_data.level_data = current_level_data
 	
 	if current_level_node != null:
-		var entities_container = current_level_node.find_child("Entities", false)
+		var world_y_sort = current_level_node.find_child("WorldYSort", false)
 		
-		if entities_container != null:
-			var entities_container_children = entities_container.get_children()
+		if world_y_sort != null:
+			var world_y_sort_children = world_y_sort.get_children()
 			
-			if not entities_container_children.is_empty():
-				for entity in entities_container_children:
+			if not world_y_sort_children.is_empty():
+				for entity in world_y_sort_children:
 					if "entity_data" in entity and "current_entity_state_data":
 						var entity_data = entity.get("entity_data")
 						var entity_state_data = entity.get("current_entity_state_data")
@@ -139,9 +139,9 @@ func create_level_state_data_for_current_level():
 func spawn_entity(entity: Node2D, position: Vector2):
 	entity.position = position
 	
-	var entities_container = current_level_node.find_child("Entities", false)
-	entities_container.add_child(entity)
-	entities_container.move_child(entity, 0)
+	var world_y_sort = current_level_node.find_child("WorldYSort", true)
+	world_y_sort.add_child(entity)
+	world_y_sort.move_child(entity, 0)
 
 func _on_interaction_with_portal(target_level: LevelData):
 	#save_level_state(current_level_data)
